@@ -100,7 +100,6 @@
         padding-bottom: 25px;
         padding-top: 25px;
         padding-left: calc(13 / 24 * 100%);
-        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
       }
 
       .c-mouse-vertical-carousel__eyebrow {
@@ -128,7 +127,6 @@
         background-position: center;
         will-change: transform;
         background-repeat: no-repeat;
-        transition: opacity 0.3s ease-out, transform 0.6s ease-out;
       }
     </style>
     <title>Carrusel de Imágenes</title>
@@ -139,7 +137,7 @@
       <header class="c-header c-header--archive c-header--project-list">
         <div
           class="c-mouse-vertical-carousel js-carousel u-media-wrapper u-media-wrapper--16-9"
-          style="border-radius: 50px;"
+          style="border-radius: 50px"
         >
           <ul class="c-mouse-vertical-carousel__list js-carousel-list">
             <li
@@ -165,7 +163,9 @@
               data-item-id="2"
             >
               <a href="">
-                <p class="c-mouse-vertical-carousel__title u-a5">Automation-anywhere</p>
+                <p class="c-mouse-vertical-carousel__title u-a5">
+                  Automation-anywhere
+                </p>
               </a>
             </li>
 
@@ -174,9 +174,7 @@
               data-item-id="3"
             >
               <a href="">
-                <p class="c-mouse-vertical-carousel__title u-a5">
-                  Aws
-                </p>
+                <p class="c-mouse-vertical-carousel__title u-a5">Aws</p>
               </a>
             </li>
 
@@ -194,9 +192,7 @@
               data-item-id="5"
             >
               <a href="">
-                <p class="c-mouse-vertical-carousel__title u-a5">
-                  Blancco
-                </p>
+                <p class="c-mouse-vertical-carousel__title u-a5">Blancco</p>
               </a>
             </li>
 
@@ -205,9 +201,7 @@
               data-item-id="6"
             >
               <a href="">
-                <p class="c-mouse-vertical-carousel__title u-a5">
-                  Hitachi
-                </p>
+                <p class="c-mouse-vertical-carousel__title u-a5">Hitachi</p>
               </a>
             </li>
           </ul>
@@ -218,39 +212,27 @@
           ></i>
           <i
             class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
-            style="
-              background-image: url('Assac.png');
-            "
+            style="background-image: url('Assac.png')"
           ></i>
           <i
             class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
-            style="
-              background-image: url('automation-anywhere.png');
-            "
+            style="background-image: url('automation-anywhere.png')"
           ></i>
           <i
             class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
-            style="
-              background-image: url('aws.png');
-            "
+            style="background-image: url('aws.png')"
           ></i>
           <i
             class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
-            style="
-              background-image: url('azure.png');
-            "
+            style="background-image: url('azure.png')"
           ></i>
           <i
             class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
-            style="
-              background-image: url('Blancco.png');
-            "
+            style="background-image: url('Blancco.png')"
           ></i>
           <i
             class="c-mouse-vertical-carousel__bg-img js-carousel-bg-img"
-            style="
-              background-image: url('Hitachi-05.png');
-            "
+            style="background-image: url('Hitachi-05.png')"
           ></i>
           <i class="c-gradient-overlay"></i>
         </div>
@@ -268,7 +250,6 @@
           };
 
           this.posY = 0;
-          this.hovering = false;
 
           this.defaults = Object.assign({}, _defaults, options);
 
@@ -277,6 +258,7 @@
           this.bgImgController();
         }
 
+        //region getters
         getBgImgs() {
           return document.querySelectorAll(this.defaults.bgImg);
         }
@@ -319,37 +301,13 @@
               this.posY = event.pageY - this.getCarousel().offsetTop;
               let offset = (-this.posY / carouselHeight) * listHeight;
 
-              if (!this.hovering) {
-                this.hovering = true;
-                this.animateList(offset);
-              }
-            },
-            false
-          );
-
-          this.getCarousel().addEventListener(
-            "mouseleave",
-            () => {
-              this.hovering = false;
               TweenMax.to(this.getList(), 0.3, {
-                y: 0,
+                y: offset,
                 ease: Power4.easeOut,
               });
             },
             false
           );
-        }
-
-        animateList(offset) {
-          TweenMax.to(this.getList(), 0.3, {
-            y: offset,
-            ease: Power4.easeOut,
-            onComplete: () => {
-              if (this.hovering) {
-                this.animateList(offset);
-              }
-            },
-          });
         }
 
         bgImgController() {
