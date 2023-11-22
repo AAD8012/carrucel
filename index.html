@@ -12,6 +12,7 @@
       body {
         color: #fff;
         background-color: #8745ad;
+        cursor: url("puntero.png"), auto !important;
       }
 
       .container {
@@ -22,8 +23,7 @@
         align-items: center;
         align-content: stretch;
         min-height: 100vh;
-        width: 100%;
-        max-width: 1500px;
+        width: 70%;
         margin: 0 auto;
       }
 
@@ -75,11 +75,6 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-image: radial-gradient(
-          circle at 49% 50%,
-          rgba(2, 21, 25, 0.3),
-          rgba(2, 21, 25, 0.6)
-        );
       }
 
       .c-mouse-vertical-carousel {
@@ -91,7 +86,7 @@
         width: 100%;
         position: absolute;
         left: 0;
-        top: 50%;
+        top: 60%;
         z-index: 1;
       }
 
@@ -119,7 +114,7 @@
 
       .c-mouse-vertical-carousel__bg-img {
         position: absolute;
-        top: 2%;
+        top: 20%;
         left: 6%;
         width: 40%;
         height: 100%;
@@ -130,9 +125,32 @@
       }
     </style>
     <title>Carrusel de Imágenes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
   </head>
   <body>
+    <div
+      style="
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Montserrat', sans-serif;
+        position: absolute;
+        padding: 3%;
+        font-weight: bold;
+      "
+    >
+      <p>Son una parte importante de nuestro éxito.</p>
+      <br />
+      <p>
+        Contribuyen con sus servicios a generar alianzas estratégicas que nos
+        permiten ofrecer mejores soluciones.
+      </p>
+    </div>
     <div class="container">
       <header class="c-header c-header--archive c-header--project-list">
         <div
@@ -301,7 +319,7 @@
               this.posY = event.pageY - this.getCarousel().offsetTop;
               let offset = (-this.posY / carouselHeight) * listHeight;
 
-              TweenMax.to(this.getList(), 0.3, {
+              TweenMax.to(this.getList(), 0.2, {
                 y: offset,
                 ease: Power4.easeOut,
               });
@@ -332,7 +350,7 @@
                 this.getBgImgs()[currentId].classList.add("is-visible");
               }
 
-              TweenMax.to(this.getBgImgs()[currentId], 0.6, {
+              TweenMax.to(this.getBgImgs()[currentId], 0.4, {
                 autoAlpha: 1,
                 scale: 1,
               });
